@@ -22,10 +22,12 @@ class _LoginScreenState extends State<LoginScreen> {
               MaterialPageRoute(builder: (context) => HomeScreen()));
           break;
         case LoginState.FAIL:
-          showDialog(context: context, builder: (context) => AlertDialog(
-              title: Text('Erro'),
-              content: Text('Você não possui os privilégios necessários'),
-          ));
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: Text('Erro'),
+                    content: Text('Você não possui os privilégios necessários'),
+                  ));
           break;
         case LoginState.LOADING:
         case LoginState.IDLE:
@@ -111,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       textColor: Colors.white,
-                                      disabledColor: Colors.greenAccent[100],
+                                      disabledColor: Colors.greenAccent[800],
                                       onPressed:
                                           snapshot.hasData ? () {} : null,
                                     ),
