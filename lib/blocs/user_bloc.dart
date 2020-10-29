@@ -13,8 +13,24 @@ class UserBloc extends BlocBase {
     _addUsersListener();
   }
 
+  void onChangedSearch(String search) {
+    if (search.trim().isEmpty) {
+      _usersController.add(_users.values.toList());
+    } else {
+      _usersController.add(_filter(search.trim()));
+    }
+  }
+
+  List<Map<String, dynamic>> _filter(String search) {
+    var filteredUsers = List<Map<String, dynamic>>.from(_users.values.toList());
+    filteredUsers.retainWhere((user) => 
+      user['name'].toUpperCase().contains(search.toUpperCase()));
+    return filteredUsers;
+  }
+
   void _addUsersListener() {
     _firestore.collection('users').snapshots().listen((snapshot) {
+      // ignore: avoid_function_literals_in_foreach_calls
       snapshot.documentChanges.forEach((change) {
         var uid = change.document.documentID;
 
@@ -47,7 +63,6 @@ class UserBloc extends BlocBase {
         .collection('orders')
         .snapshots()
         .listen((orders) async {
-          
       var numOrders = orders.documents.length;
       var money = 0.0;
 

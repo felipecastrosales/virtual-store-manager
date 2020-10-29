@@ -20,7 +20,9 @@ class UsersTab extends StatelessWidget {
                 hintText: 'Pesquise clientes',
                 hintStyle: TextStyle(color: Colors.white70),
                 icon: Icon(Icons.search, color: Theme.of(context).accentColor),
-                border: InputBorder.none),
+                border: InputBorder.none
+            ),
+            onChanged: _userBloc.onChangedSearch,
           ),
         ),
         Expanded(
