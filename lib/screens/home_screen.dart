@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import '../blocs/user_bloc.dart';
+import '../tabs/orders_tab.dart';
 import '../tabs/users_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             children: <Widget>[
               UsersTab(),
-              Container(color: Colors.blue),
+              OrdersTab(),
               Container(color: Colors.green),
             ],
           ),
