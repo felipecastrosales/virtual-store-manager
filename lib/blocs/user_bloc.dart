@@ -70,15 +70,10 @@ class UserBloc extends BlocBase {
             .get();
 
         if (order.data == null) continue;
-
         money += order.data['totalPrice'];
       }
 
-      _users[uid].addAll({
-        'money': money,
-        'orders': numOrders,
-      });
-
+      _users[uid].addAll({'money': money, 'orders': numOrders});
       _usersController.add(_users.values.toList());
     });
   }

@@ -12,14 +12,11 @@ class UserTile extends StatelessWidget {
     if (user.containsKey('money')) {
       return ListTile(
         title: Text(user['name'], style: kLabelStyle),
-        subtitle: Text(user['subtitle'], style: kLabelStyle),
+        subtitle: Text(user['email'], style: kLabelStyle),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[ 
-            Text(
-              'Pedidos: ${user['orders']}',
-              style: kLabelStyle,
-            ),
+            Text('Pedidos: ${user['orders']}', style: kLabelStyle),
             Text('Gasto: R\$${user['money'].toStringAsFixed(2)}',
                 style: kLabelStyle),
           ],
