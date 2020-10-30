@@ -39,19 +39,16 @@ class UserBloc extends BlocBase {
             _users[uid] = change.document.data;
             _subscribeToOrders(uid);
             break;
-
           case DocumentChangeType.modified:
             _users[uid].addAll(change.document.data);
             _usersController.add(_users.values.toList());
             break;
-
           case DocumentChangeType.removed:
             _users.remove(uid);
             _unsubscribeToOrders(uid);
             _usersController.add(_users.values.toList());
             break;
         }
-        ;
       });
     });
   }
