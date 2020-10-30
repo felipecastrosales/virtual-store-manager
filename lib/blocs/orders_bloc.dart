@@ -16,18 +16,18 @@ class OrdersBloc extends BlocBase {
     _firestore.collection('orders').snapshots().listen((snapshot) {
       // ignore: avoid_function_literals_in_foreach_calls
       snapshot.documentChanges.forEach((change) {
-        var orderId = change.document.documentID;
+        var oid = change.document.documentID;
 
         switch (change.type) {
           case DocumentChangeType.added:
             _orders.add(change.document);
             break;
           case DocumentChangeType.modified:
-            _orders.removeWhere((order) => order.documentID == orderId);
+            _orders.removeWhere((order) => order.documentID == oid);
             _orders.add(change.document);
             break;
           case DocumentChangeType.removed:
-            _orders.removeWhere((order) => order.documentID == orderId);
+            _orders.removeWhere((order) => order.documentID == oid);
             break;
         }
       });      
