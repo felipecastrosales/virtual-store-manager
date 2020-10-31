@@ -18,7 +18,7 @@ class UserTile extends StatelessWidget {
           children: <Widget>[ 
             Text('Pedidos: ${user['orders']}', style: kLabelStyle),
             Text('Gasto: R\$${user['money'].toStringAsFixed(2)}',
-                style: kLabelStyle),
+              style: kLabelStyle),
           ],
         ),
       );
@@ -32,24 +32,23 @@ class UserTile extends StatelessWidget {
               width: 150,
               height: 20,
               child: Shimmer.fromColors(
+                baseColor: Colors.white,
+                highlightColor: Colors.grey, 
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 4),
                   color: Colors.white.withAlpha(50),
                 ),
-                baseColor: Colors.white,
-                highlightColor: Colors.grey, 
               ),
             ),
             SizedBox(
               width: 50,
               height: 20,
               child: Shimmer.fromColors(
+                baseColor: Colors.white,
+                highlightColor: Colors.grey,
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 4),
-                  color: Colors.white.withAlpha(50),
-                ),
-                baseColor: Colors.white,
-                highlightColor: Colors.grey, 
+                  color: Colors.white.withAlpha(50)),
               ),
             ),
           ],

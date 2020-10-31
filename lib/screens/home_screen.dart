@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
           canvasColor: Theme.of(context).accentColor,
           primaryColor: Colors.black,
           textTheme: Theme.of(context).textTheme.copyWith(
-                caption: TextStyle(color: Colors.black),
-              ),
+            caption: TextStyle(color: Colors.black),
+          ),
         ),
         child: BottomNavigationBar(
           currentIndex: _page,
