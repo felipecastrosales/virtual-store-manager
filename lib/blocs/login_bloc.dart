@@ -11,15 +11,19 @@ enum LoginState { IDLE, LOADING, SUCCESS, FAIL }
 
 // ignore: prefer_mixin
 class LoginBloc extends BlocBase with LoginValidators {
+
   final _emailController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
   final _stateController = BehaviorSubject<LoginState>();
 
   Stream<String> get outEmail =>
       _emailController.stream.transform(validateEmail);
+
   Stream<String> get outPassword =>
       _passwordController.stream.transform(validatePassword);
+
   Stream<LoginState> get outState => _stateController.stream;
+
   Stream<bool> get outSubmitValid =>
       Observable.combineLatest2(outEmail, outPassword, (a, b) => true);
 
@@ -30,18 +34,19 @@ class LoginBloc extends BlocBase with LoginValidators {
 
   LoginBloc() {
     _streamSubscription =
-        FirebaseAuth.instance.onAuthStateChanged.listen((user) async {
-      if (user != null) {
-        if (await verifyPrivileges(user)) {
-          _stateController.add(LoginState.SUCCESS);
+      FirebaseAuth.instance.onAuthStateChanged.listen((user) async {
+        if (user != null) {
+          if (await verifyPrivileges(user)) {
+            _stateController.add(LoginState.SUCCESS);
+          } else {
+            FirebaseAuth.instance.signOut();
+            _stateController.add(LoginState.FAIL);
+          }
         } else {
-          FirebaseAuth.instance.signOut();
-          _stateController.add(LoginState.FAIL);
+          _stateController.add(LoginState.IDLE);
         }
-      } else {
-        _stateController.add(LoginState.IDLE);
       }
-    });
+    );
   }
 
   void submit() {
@@ -50,26 +55,28 @@ class LoginBloc extends BlocBase with LoginValidators {
 
     _stateController.add(LoginState.LOADING);
     FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password)
-        .catchError((e) {
-      _stateController.add(LoginState.FAIL);
-    });
+      .signInWithEmailAndPassword(email: email, password: password)
+      .catchError((e) {
+        _stateController.add(LoginState.FAIL);
+      }
+    );
   }
 
   Future<bool> verifyPrivileges(FirebaseUser user) async {
     return await Firestore.instance
-        .collection('admins')
-        .document(user.uid)
-        .get()
-        .then((doc) {
-      if (doc.data != null) {
-        return true;
-      } else {
+      .collection('admins')
+      .document(user.uid)
+      .get()
+      .then((doc) {
+        if (doc.data != null) {
+          return true;
+        } else {
+          return false;
+        }
+      }).catchError((e) {
         return false;
       }
-    }).catchError((e) {
-      return false;
-    });
+    );
   }
 
   @override
