@@ -31,47 +31,48 @@ class OrderTile extends StatelessWidget {
           ),
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    OrderHeader(),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: order.data['products'].map<Widget>((p) {
-                        return ListTile(
-                          // ignore: prefer_interpolation_to_compose_strings
-                          title: Text(p['product']['title'] + ' ' + p['size']),
-                          // ignore: prefer_interpolation_to_compose_strings
-                          subtitle: Text(p['category'] + '/' + p['productId']),
-                          trailing: Text(p['quantity'], 
-                            style: TextStyle(fontSize: 20)),
-                          contentPadding: EdgeInsets.zero,
-                        );
-                      }).toList(),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text('Excluir',
-                              style: TextStyle(color: Colors.red)),
-                        ),
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text('Regredir',
-                              style: TextStyle(color: Colors.grey)),
-                        ),
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text('Avançar',
-                              style: TextStyle(color: Colors.green)),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  OrderHeader(),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: order.data['products'].map<Widget>((p) {
+                      return ListTile(
+                        // ignore: prefer_interpolation_to_compose_strings
+                        title: Text(p['product']['title'] + ' ' + p['size']),
+                        // ignore: prefer_interpolation_to_compose_strings
+                        subtitle: Text(p['category'] + '/' + p['productId']),
+                        trailing: Text(p['quantity'], 
+                          style: TextStyle(fontSize: 20)),
+                        contentPadding: EdgeInsets.zero,
+                      );
+                    }).toList(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text('Excluir',
+                          style: TextStyle(color: Colors.red)),
+                      ),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text('Regredir',
+                          style: TextStyle(color: Colors.grey)),
+                      ),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text('Avançar',
+                          style: TextStyle(color: Colors.green)),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ),
           ],
         ),
       ),
