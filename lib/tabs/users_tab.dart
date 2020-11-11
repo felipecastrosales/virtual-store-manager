@@ -7,7 +7,6 @@ class UsersTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _userBloc = BlocProvider.of<UserBloc>(context);
-
     return Column(
       children: <Widget>[
         Padding(
@@ -31,15 +30,13 @@ class UsersTab extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(
-                      Theme.of(context).accentColor)),
-                );
+                      Theme.of(context).accentColor)));
               } else if (snapshot.data.length == 0) {
                   return Center(
                     child: Text('Nenhum usuário encontrado.',
                       style: TextStyle(
                         color: Theme.of(context).accentColor,
-                        fontSize: 24)),
-                  );
+                        fontSize: 24)));
               } else {
                 return ListView.separated(
                   itemBuilder: (context, index) {

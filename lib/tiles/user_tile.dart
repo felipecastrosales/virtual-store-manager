@@ -15,6 +15,7 @@ class UserTile extends StatelessWidget {
         subtitle: Text(user['email'], style: kLabelStyle),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[ 
             Text('Pedidos: ${user['orders']}', style: kLabelStyle),
             Text('Gasto: R\$${user['money'].toStringAsFixed(2)}',
