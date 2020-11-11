@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 
 class UserTile extends StatelessWidget {
   final Map<String, dynamic> user;
-  const UserTile(data, {this.user});
+  const UserTile(this.user);
 
   @override
   Widget build(BuildContext context) {
