@@ -23,8 +23,8 @@ class UserBloc extends BlocBase {
 
   List<Map<String, dynamic>> _filter(String search) {
     var filteredUsers = List<Map<String, dynamic>>.from(_users.values.toList());
-    filteredUsers.retainWhere((user) => 
-      user['name'].toUpperCase().contains(search.toUpperCase()));
+    filteredUsers.retainWhere(
+        (user) => user['name'].toUpperCase().contains(search.toUpperCase()));
     return filteredUsers;
   }
 
@@ -68,14 +68,16 @@ class UserBloc extends BlocBase {
             .collection('orders')
             .document(docSnap.documentID)
             .get();
-
         if (order.data == null) continue;
         money += order.data['totalPrice'];
       }
-
       _users[uid].addAll({'money': money, 'orders': numOrders});
       _usersController.add(_users.values.toList());
     });
+  }
+
+  Map<String, dynamic> getUser(String uid) {
+    return _users[uid];
   }
 
   void _unsubscribeToOrders(String uid) {
