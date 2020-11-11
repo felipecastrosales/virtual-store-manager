@@ -30,10 +30,8 @@ class OrdersBloc extends BlocBase {
             _orders.removeWhere((order) => order.documentID == oid);
             break;
         }
-      });      
-      
-      _ordersController.add(_orders);   
-    
+      });            
+      _ordersController.add(_orders);       
     });
   }
 

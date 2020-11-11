@@ -4,7 +4,7 @@ import '../widgets/order_header.dart';
 
 class OrderTile extends StatelessWidget {
   final DocumentSnapshot order;
-  OrderTile(data, {this.order});
+  OrderTile(this.order);
 
   final states = [
     '',
@@ -25,7 +25,7 @@ class OrderTile extends StatelessWidget {
             '#${order.documentID.substring(order.documentID.length - 7, order.documentID.length)} - '
             '${states[order.data['status']]}',
             style: TextStyle(color: order.data['status'] != 4 
-              ? Colors.grey[850]
+              ? Colors.grey[300]
               : Colors.green
             ),
           ),
@@ -41,11 +41,11 @@ class OrderTile extends StatelessWidget {
                     children: order.data['products'].map<Widget>((p) {
                       return ListTile(
                         // ignore: prefer_interpolation_to_compose_strings
-                        title: Text(p['product']['title'] + ' ' + p['size']),
+                        title: Text(p['product']['title'] + ' - ' + p['size']),
                         // ignore: prefer_interpolation_to_compose_strings
                         subtitle: Text(p['category'] + '/' + p['productId']),
-                        trailing: Text(p['quantity'], 
-                          style: TextStyle(fontSize: 20)),
+                        trailing: Text(p['quantity'].toString(), 
+                          style: TextStyle(fontSize: 18)),
                         contentPadding: EdgeInsets.zero,
                       );
                     }).toList(),
