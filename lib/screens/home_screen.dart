@@ -14,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController;
   int _page = 0;
-
   UserBloc _userBloc;
   OrdersBloc _ordersBloc;
 

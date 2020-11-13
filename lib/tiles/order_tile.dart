@@ -43,7 +43,7 @@ class OrderTile extends StatelessWidget {
                     children: order.data['products'].map<Widget>((p) {
                       return ListTile(
                         // ignore: prefer_interpolation_to_compose_strings
-                        title: Text(p['product']['title'] + ' ' + p['size']),
+                        title: Text(p['product']['title'] + ' - ' + p['size']),
                         // ignore: prefer_interpolation_to_compose_strings
                         subtitle: Text(p['category'] + '/' + p['productId']),
                         trailing: Text(p['quantity'].toString(), 
