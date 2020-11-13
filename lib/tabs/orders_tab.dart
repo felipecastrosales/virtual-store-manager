@@ -29,7 +29,7 @@ class OrdersTab extends StatelessWidget {
               return OrderTile(snapshot.data[index]);
             },
           );
-        }
+        },
       ),
     );
   }
