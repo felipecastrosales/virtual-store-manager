@@ -55,11 +55,11 @@ class UserBloc extends BlocBase {
 
   void _subscribeToOrders(String uid) {
     _users[uid]['subscription'] = _firestore
-        .collection('users')
-        .document(uid)
-        .collection('orders')
-        .snapshots()
-        .listen((orders) async {
+          .collection('users')
+          .document(uid)
+          .collection('orders')
+          .snapshots()
+          .listen((orders) async {
       var numOrders = orders.documents.length;
       var money = 0.0;
 

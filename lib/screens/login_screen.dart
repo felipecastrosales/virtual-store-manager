@@ -46,10 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: StreamBuilder<LoginState>(
-         stream: _loginBloc.outState,
-         initialData: LoginState.LOADING,
-         // ignore: missing_return
-         builder: (context, snapshot) {
+        stream: _loginBloc.outState,
+        initialData: LoginState.LOADING,
+        // ignore: missing_return
+        builder: (context, snapshot) {
           switch (snapshot.data) {
             case LoginState.LOADING:
               return Center(
@@ -82,11 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             onChanged: _loginBloc.changeEmail,
                           ),
                           InputField(
-                           icon: Icons.lock_open_rounded,
-                           hint: 'Senha',
-                           obscure: true,
-                           stream: _loginBloc.outPassword,
-                           onChanged: _loginBloc.changePassword,
+                            icon: Icons.lock_open_rounded,
+                            hint: 'Senha',
+                            obscure: true,
+                            stream: _loginBloc.outPassword,
+                            onChanged: _loginBloc.changePassword,
                           ),
                           SizedBox(
                             height: 32,

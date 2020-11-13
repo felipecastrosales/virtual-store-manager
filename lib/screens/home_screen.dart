@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import '../blocs/orders_bloc.dart';
 import '../blocs/user_bloc.dart';
 import '../tabs/orders_tab.dart';
@@ -39,17 +40,19 @@ class _HomeScreenState extends State<HomeScreen> {
           canvasColor: Theme.of(context).accentColor,
           primaryColor: Colors.black,
           textTheme: Theme.of(context).textTheme.copyWith(
-            caption: TextStyle(color: Colors.black),
-          ),
+                caption: TextStyle(color: Colors.black),
+              ),
         ),
         child: BottomNavigationBar(
           currentIndex: _page,
-          unselectedItemColor: Colors.black87,
-          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey[100],
+          selectedItemColor: Colors.white,
+          selectedLabelStyle: TextStyle(fontSize: 15),
           onTap: (toPage) {
             _pageController.animateToPage(toPage,
-                duration: Duration(milliseconds: 200),
-                curve: Curves.decelerate);
+              duration: Duration(milliseconds: 200),
+              curve: Curves.ease
+            );
           },
           items: [
             BottomNavigationBarItem(
@@ -88,6 +91,48 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: _buildFloating(),
     );
+  }
+
+  // ignore: missing_return
+  Widget _buildFloating() {
+    switch (_page) {
+      case 0:
+        return null;
+      case 1:
+        return SpeedDial(
+          child: Icon(Icons.sort, color: Colors.white),
+          backgroundColor: Theme.of(context).accentColor,
+          overlayOpacity: 0.4,
+          overlayColor: Theme.of(context).primaryColor,
+          children: [
+            SpeedDialChild(
+              child: Icon(
+                Icons.keyboard_arrow_down_rounded,
+                color: Colors.white,
+              ),
+              label: 'Concluídos abaixo',
+              labelStyle: TextStyle(
+                fontSize: 14, color: Theme.of(context).primaryColor),
+              onTap: () {
+                _ordersBloc.setOrderCriteria(SortCriteria.READY_LAST);
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(
+                Icons.keyboard_arrow_up_rounded,
+                color: Colors.white,
+              ),
+              label: 'Concluídos acima',
+              labelStyle: TextStyle(
+                fontSize: 14, color: Theme.of(context).primaryColor),
+              onTap: () {
+                _ordersBloc.setOrderCriteria(SortCriteria.READY_FIRST);
+              },
+            ),
+          ],
+        );
+    }
   }
 }
