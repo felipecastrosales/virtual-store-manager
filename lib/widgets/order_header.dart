@@ -17,8 +17,7 @@ class OrderHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('${_user['name']}',
-                style: TextStyle(fontSize: 20)),
+              Text('${_user['name']}', style: TextStyle(fontSize: 20)),
               Text('${_user['address']}', style: TextStyle(fontSize: 16)),
             ]
           ),
@@ -29,14 +28,14 @@ class OrderHeader extends StatelessWidget {
             Text(
               'Produtos: R\$'
               '${order.data['productsPrice'].toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 18)),
+              style: TextStyle(fontSize: 18)),
             Text(
               'Total: R\$'
               '${order.data['totalPrice'].toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).accentColor,
-                  fontWeight: FontWeight.bold,
+              style: TextStyle(
+                fontSize: 20,
+                color: Theme.of(context).accentColor,
+                fontWeight: FontWeight.bold,
               )
             ),
           ],
