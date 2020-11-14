@@ -7,7 +7,7 @@ class ProductsTab extends StatefulWidget {
   _ProductsTabState createState() => _ProductsTabState();
 }
 
-class _ProductsTabState extends State<ProductsTab>
+class _ProductsTabState extends State<ProductsTab> 
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class _ProductsTabState extends State<ProductsTab>
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-                valueColor:
-                    AlwaysStoppedAnimation(Theme.of(context).accentColor)),
+              valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor)
+            ),
           );
-        }
+        } 
         return ListView.builder(
           itemCount: snapshot.data.documents.length,
           itemBuilder: (context, index) {
