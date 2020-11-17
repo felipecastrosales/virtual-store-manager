@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../blocs/product_bloc.dart';
+import '../widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
   final String categoryId;
@@ -55,6 +56,10 @@ class _ProductScreenState extends State<ProductScreen> {
               return ListView(
                 padding: EdgeInsets.all(16),
                 children: <Widget>[
+                  Text('Imagens', style: _fieldStyle),
+                  ImagesWidget(
+                    
+                  ),
                   TextFormField(
                     initialValue: snapshot.data['title'], 
                     style: _fieldStyle,
@@ -76,7 +81,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     initialValue: snapshot.data['price']?.toStringAsFixed(2), 
                     style: _fieldStyle,
                     decoration: _buildDecoration('Preço'),
-                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: TextInputType.numberWithOptions(decimal:true),
                     onSaved: (textValue) {},
                     // ignore: missing_return
                     validator: (textValue) {},
