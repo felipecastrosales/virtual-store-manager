@@ -58,7 +58,11 @@ class _ProductScreenState extends State<ProductScreen> {
                 children: <Widget>[
                   Text('Imagens', style: _fieldStyle),
                   ImagesWidget(
-                    
+                    context: context,
+                    initialValue: snapshot.data['images'],
+                    onSaved: (l){},
+                    // ignore: missing_return
+                    validator: (l){},
                   ),
                   TextFormField(
                     initialValue: snapshot.data['title'], 
