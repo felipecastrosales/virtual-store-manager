@@ -51,8 +51,8 @@ class ProductBloc extends BlocBase {
     unsavedData['price'] = double.parse(price);
   }
 
-    void saveSize(String size) {
-    unsavedData['size'] = size;
+  void saveSizes(List sizes) {
+    unsavedData['sizes'] = sizes;
   }
 
   // ignore: missing_return
