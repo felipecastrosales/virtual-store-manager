@@ -57,10 +57,12 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                   builder: (context, snapshot) {
                     return IconButton(
                       icon: Icon(Icons.remove),
-                      onPressed: snapshot.data ? null : (){
-                        _productBloc.deleteProduct();
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: snapshot.data
+                        ? null
+                        : () {
+                            _productBloc.deleteProduct();
+                            Navigator.of(context).pop();
+                        },
                     );
                   }
                 );
@@ -91,6 +93,7 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                 if (!snapshot.hasData) {
                   return Container();
                 } else {
+                  var productBloc = _productBloc;
                   return ListView(
                     padding: EdgeInsets.all(16),
                     children: <Widget>[
@@ -117,7 +120,7 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                         validator: validateDescription,
                       ),
                       TextFormField(
-                        initialValue: 
+                        initialValue:
                             snapshot.data['price']?.toStringAsFixed(2),
                         style: _fieldStyle,
                         decoration: _buildDecoration('Preço'),
@@ -129,13 +132,15 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                       SizedBox(height: 6),
                       Text('Imagens', style: _fieldStyle),
                       ProductSizes(
+                        context: context,
                         initialValue: snapshot.data['sizes'],
-                        onSaved: (sizeValue){
-
-                        },
-                        // ignore: missing_return
-                        validator: (sizeValue){
-                          
+                        onSaved: productBloc.saveSizes,
+                        validator: (sizeValue) {
+                          if (sizeValue.isEmpty) {
+                            return 'Adicione um tamanho';
+                          } else {
+                            return '';
+                          }
                         },
                       ),
                     ],
@@ -173,7 +178,7 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
       );
       var success = await _productBloc.saveProduct();
       _scaffoldKey.currentState.removeCurrentSnackBar();
-      _scaffoldKey.currentState.showSnackBar( 
+      _scaffoldKey.currentState.showSnackBar(
         SnackBar(
           content: Text(success ? 'Produto salvo' : 'Erro ao salvar produto'),
           backgroundColor: Theme.of(context).accentColor,
