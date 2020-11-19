@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../blocs/product_bloc.dart';
 import '../validators/product_validator.dart';
 import '../widgets/images_widget.dart';
+import '../widgets/product_sizes.dart';
 
 class ProductScreen extends StatefulWidget {
   final String categoryId;
@@ -124,6 +125,18 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                             TextInputType.numberWithOptions(decimal: true),
                         onSaved: _productBloc.savePrice,
                         validator: validatePrice,
+                      ),
+                      SizedBox(height: 6),
+                      Text('Imagens', style: _fieldStyle),
+                      ProductSizes(
+                        initialValue: snapshot.data['sizes'],
+                        onSaved: (sizeValue){
+
+                        },
+                        // ignore: missing_return
+                        validator: (sizeValue){
+                          
+                        },
                       ),
                     ],
                   );
