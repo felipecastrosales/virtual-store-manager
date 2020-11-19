@@ -51,6 +51,10 @@ class ProductBloc extends BlocBase {
     unsavedData['price'] = double.parse(price);
   }
 
+    void saveSize(String size) {
+    unsavedData['size'] = size;
+  }
+
   // ignore: missing_return
   Future<bool> saveProduct() async {
     _loadingController.add(true);
