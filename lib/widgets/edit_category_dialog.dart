@@ -10,8 +10,8 @@ class EditCategoryDialog extends StatefulWidget {
 
   @override
   _EditCategoryDialogState createState() => _EditCategoryDialogState(
-    category: category,
-  );
+        category: category,
+      );
 }
 
 class _EditCategoryDialogState extends State<EditCategoryDialog> {
@@ -20,7 +20,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
   _EditCategoryDialogState({DocumentSnapshot category})
       : _categoryBloc = CategoryBloc(category),
         _controller = TextEditingController(
-          text: category != null ? category.data['title'] : '');
+            text: category != null ? category.data['title'] : '');
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +31,13 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           children: <Widget>[
             ListTile(
               leading: GestureDetector(
-                onTap: (){
+                onTap: () {
                   showModalBottomSheet(
-                    context: context, 
+                    context: context,
                     builder: (context) => ImageSourceSheet(
                       onImageSelected: (image) {
-                        Navigator.of(context).pop();
                         _categoryBloc.setImage(image);
+                        Navigator.of(context).pop();
                       },
                     ),
                   );
@@ -48,8 +48,8 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                     if (snapshot.data != null) {
                       return CircleAvatar(
                         child: snapshot.data is File
-                          ? Image.file(snapshot.data, fit: BoxFit.cover)
-                          : Image.network(snapshot.data, fit: BoxFit.cover),
+                            ? Image.file(snapshot.data, fit: BoxFit.cover)
+                            : Image.network(snapshot.data, fit: BoxFit.cover),
                         backgroundColor: Colors.transparent,
                       );
                     } else {
@@ -68,7 +68,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                       errorText: snapshot.hasError ? snapshot.error : null,
                     ),
                   );
-                }
+                },
               ),
             ),
             Row(
@@ -81,7 +81,10 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                     return FlatButton(
                       child: Text('Excluir'),
                       textColor: Colors.red,
-                      onPressed: snapshot.data ? () {} : null,
+                      onPressed: snapshot.data ? () {
+                        _categoryBloc.delete();
+                        Navigator.of(context).pop();
+                      } : null,
                     );
                   },
                 ),
@@ -91,9 +94,12 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                     return FlatButton(
                       child: Text('Salvar'),
                       textColor: Theme.of(context).accentColor,
-                      onPressed: snapshot.hasData ? (){} : null,
+                      onPressed: snapshot.hasData ? () async {
+                        await _categoryBloc.saveData();
+                        Navigator.of(context).pop();
+                      } : null,
                     );
-                  }
+                  },
                 ),
               ],
             ),
