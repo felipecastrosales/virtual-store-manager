@@ -24,10 +24,12 @@ class _LoginScreenState extends State<LoginScreen> {
         
         case LoginState.FAIL:
           showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: Text('Erro'),
-                content: Text('Você não possui os privilégios necessários')));
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Erro'),
+              content: Text('Você não possui os privilégios necessários')
+            )
+          );
           break;
         case LoginState.LOADING:
         case LoginState.IDLE:
