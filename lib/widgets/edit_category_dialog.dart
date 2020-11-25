@@ -9,9 +9,8 @@ class EditCategoryDialog extends StatefulWidget {
   EditCategoryDialog({this.category});
 
   @override
-  _EditCategoryDialogState createState() => _EditCategoryDialogState(
-        category: category,
-      );
+  _EditCategoryDialogState createState() => 
+      _EditCategoryDialogState(category: category);
 }
 
 class _EditCategoryDialogState extends State<EditCategoryDialog> {

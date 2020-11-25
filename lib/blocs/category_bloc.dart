@@ -31,8 +31,8 @@ class CategoryBloc extends BlocBase {
   String title;
 
   CategoryBloc(this.category) {
-    title = category.data['title'];
     if (category != null) {
+      title = category.data['title'];
       _titleController.add(category.data['title']);
       _imageController.add(category.data['icon']);
       _deleteController.add(true);

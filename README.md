@@ -9,17 +9,11 @@
    <p>
    
 - [About 📖](#about-)
-
 - [Preview 📱](#preview-)
-
 - [Functionalities 🛠️](#functionalities-%EF%B8%8F)
-
 - [Challenges and Learnings along the way 🤯](#challenges-and-learnings-along-the-way-)
-
 - [How to Use 🤔](#how-to-use-)
-
 - [How to Contribute 💪](#how-to-contribute-)
-
 - [License 📝](#license-)
 
 ---
@@ -44,28 +38,21 @@
    <p>
    
 - Manage the Virtual Store;
-
 - Manage the Virtual Store as a whole;
-
 - On orders:
     - View the entire history of products sold,
     - View customers and their order list (with total),
     - Being able to sort the list.
-
-
 - Customers:
     - Access all customers of your store,
     - View your purchases.
-
 - In the products tab:
     - Create,
     - Read,
     - Updates,
     - Delete.
     - When creating a product you must fill in all the fields to register them (with photos and texts), with a field validation.
-
 - This application will help a lot to not have to keep updating all my products directly from Firebase, but the app, which is much simpler and faster!
-
 - Among many other benefits and features that I will add with new updates! 
    
    </p>
