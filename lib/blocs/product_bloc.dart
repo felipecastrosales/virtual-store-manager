@@ -83,13 +83,13 @@ class ProductBloc extends BlocBase {
 
   Future _uploadImages(String productID) async {
     for (var i = 0; i < unsavedData['images'].length; i++) {
-      if (unsavedData['images']['i'] is String) continue;
+      if (unsavedData['images'][i] is String) continue;
       var uploadTask = FirebaseStorage.instance
           .ref()
           .child(categoryId)
           .child(productID)
           .child(DateTime.now().millisecondsSinceEpoch.toString())
-          .putFile(unsavedData['images']['i']);
+          .putFile(unsavedData['images'][i]);
       var storage = await uploadTask.onComplete;
       String downloadUrl = await storage.ref.getDownloadURL();
       unsavedData['images'][i] = downloadUrl;
