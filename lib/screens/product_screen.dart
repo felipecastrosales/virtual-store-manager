@@ -130,17 +130,14 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                         validator: validatePrice,
                       ),
                       SizedBox(height: 6),
-                      Text('Imagens', style: _fieldStyle),
+                      Text('Tamanho', style: _fieldStyle),
                       ProductSizes(
                         context: context,
                         initialValue: snapshot.data['sizes'],
                         onSaved: productBloc.saveSizes,
+                        // ignore: missing_return
                         validator: (sizeValue) {
-                          if (sizeValue.isEmpty) {
-                            return 'Adicione um tamanho';
-                          } else {
-                            return '';
-                          }
+                          if (sizeValue.isEmpty) return '';
                         },
                       ),
                     ],

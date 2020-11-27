@@ -2,12 +2,28 @@
       <img src="https://user-images.githubusercontent.com/59374587/94870841-f459fc00-041e-11eb-9065-7bbbccd4b2a1.png" width="60px" alt="https://www.flaticon.com/free-icon/shopping-cart_833314 Kiranshastry"/>
 </p>
 
-<h1 align="center">Virtual Store</h1>
+<h1 align="center">Virtual Store Manager</h1>
+
+<h2 align="center">Topics 📋</h2>
+
+   <p>
+   
+- [About 📖](#about-)
+- [Preview 📱](#preview-)
+- [Functionalities 🛠️](#functionalities-%EF%B8%8F)
+- [Challenges and Learnings along the way 🤯](#challenges-and-learnings-along-the-way-)
+- [How to Use 🤔](#how-to-use-)
+- [How to Contribute 💪](#how-to-contribute-)
+- [License 📝](#license-)
+
+---
 
 <h2 align="center">About 📖</h2>
    
 <p align="center">
-   This is the Virtual Store Management application, to manage the store <a href="https://github.com/felipecastrosales/Virtual-Store">I created earlier</a>.<br>
+   This Futter app made using <a href="https://pub.dev/packages/bloc_pattern">BLoC Pattern</a> to separate the logic from the layout.<br>
+   The purpose of this application is to manage the <a href="https://github.com/felipecastrosales/Virtual-Store">Virtual Store</a> that I developed previously, where you can see more about the application selling all<a href="https://github.com/felipecastrosales/virtual-store-manager#topics-">topics</a>.
+   This is the Virtual Store Management application, to manage the store I created earlier</a>.<br>
 </p>
 
 ---
@@ -22,29 +38,21 @@
    <p>
    
 - Manage the Virtual Store;
-
-
 - Manage the Virtual Store as a whole;
-
 - On orders:
     - View the entire history of products sold,
     - View customers and their order list (with total),
     - Being able to sort the list.
-
-
 - Customers:
     - Access all customers of your store,
     - View your purchases.
-
 - In the products tab:
     - Create,
     - Read,
     - Updates,
     - Delete.
     - When creating a product you must fill in all the fields to register them (with photos and texts), with a field validation.
-
 - This application will help a lot to not have to keep updating all my products directly from Firebase, but the app, which is much simpler and faster!
-
 - Among many other benefits and features that I will add with new updates! 
    
    </p>
@@ -53,8 +61,11 @@
 
 <h2 align="center">Challenges and Learnings along the way 🤯</h2>
 
-   > * The application is still under development...  
-
+   <p align="center">
+   When studying Flutter, I see that many things that used to be a little complex for me, today are no longer as they were before.<br>
+   In this application, I reviewed many widgets, I understood even more about logic, about BLoC, which separes logic from layout, and I did very well developing this application.<br>
+   Every day I feel that I am evolving more and more, and I hope it never stops!
+   </p>
 
 ---
 

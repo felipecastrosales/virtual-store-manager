@@ -4,11 +4,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ProductBloc extends BlocBase {
-  final _dataController = BehaviorSubject<Map>();
+  final _dataController    = BehaviorSubject<Map>();
   final _loadingController = BehaviorSubject<bool>();
   final _createdController = BehaviorSubject<bool>();
 
-  Stream<Map> get outData => _dataController.stream;
+  Stream<Map>  get outData    => _dataController.stream;
   Stream<bool> get outLoading => _loadingController.stream;
   Stream<bool> get outCreated => _createdController.stream;
 
@@ -83,13 +83,13 @@ class ProductBloc extends BlocBase {
 
   Future _uploadImages(String productID) async {
     for (var i = 0; i < unsavedData['images'].length; i++) {
-      if (unsavedData['images']['i'] is String) continue;
+      if (unsavedData['images'][i] is String) continue;
       var uploadTask = FirebaseStorage.instance
           .ref()
           .child(categoryId)
           .child(productID)
           .child(DateTime.now().millisecondsSinceEpoch.toString())
-          .putFile(unsavedData['images']['i']);
+          .putFile(unsavedData['images'][i]);
       var storage = await uploadTask.onComplete;
       String downloadUrl = await storage.ref.getDownloadURL();
       unsavedData['images'][i] = downloadUrl;

@@ -79,7 +79,7 @@ class OrderTile extends StatelessWidget {
                           style: TextStyle(color: Colors.grey)),
                       ),
                       FlatButton(
-                        onPressed: order.data['status'] > 4
+                        onPressed: order.data['status'] < 4
                           ? () {order.reference.updateData(
                             {'status': order.data['status'] + 1});
                           } : null,

@@ -18,19 +18,6 @@ class ImageSourceSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    File _image;
-    final picker = ImagePicker();
-    File photo;
-    Future getImage(String type) async {
-      final pickedFile = await picker.getImage(
-        source: type == 'camera' 
-          ? ImageSource.camera
-          : ImageSource.gallery
-      );
-      return _image = File(pickedFile.path); // only return, and remove _image
-    }
-
     return BottomSheet(
       onClosing: () {},
       builder: (context) => Column(
@@ -39,15 +26,19 @@ class ImageSourceSheet extends StatelessWidget {
           FlatButton(
             child: Text('Câmera'),
             onPressed: () async {
-              photo = await getImage('camera');
-              imageSelected(photo);
+              var image = await ImagePicker
+                  // ignore: deprecated_member_use
+                  .pickImage(source: ImageSource.camera);
+              imageSelected(image);
             },
           ),
           FlatButton(
             child: Text('Galeria'),
             onPressed: () async {
-              photo = await getImage('gallery');
-              imageSelected(photo);
+              var image = await ImagePicker
+                  // ignore: deprecated_member_use
+                  .pickImage(source: ImageSource.gallery);
+              imageSelected(image);
             },
           ),
         ],
